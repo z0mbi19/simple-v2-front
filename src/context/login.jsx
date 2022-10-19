@@ -13,7 +13,7 @@ export const AuthProvider = (props) => {
 
   useEffect(() => {
     const token = JSON.parse(localStorage.getItem("token") || "{}");
-    if (token) {
+    if (token.jwt) {
       api.defaults.headers.common.Authorization = `Bearer${token.jwt}`;
 
       api
@@ -39,8 +39,8 @@ export const AuthProvider = (props) => {
         navigate("/dashboard");
       })
       .catch((e) => {
-        console.log(e.response.data ? e.response.data : e.message);
-        setErro(e.response.data ? e.response.data : e.message);
+        console.log(e.response ? e.response : "e.message");
+        setErro(e.response ? e.response : "e.message");
         localStorage.removeItem("token");
         api.defaults.headers.common.Authorization = `Bearer`;
         navigate("/login");
