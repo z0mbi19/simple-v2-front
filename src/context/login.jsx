@@ -39,8 +39,8 @@ export const AuthProvider = (props) => {
         navigate("/dashboard");
       })
       .catch((e) => {
-        console.log(e.response.data);
-        setErro(e.response.data);
+        console.log(e.response.data ? e.response.data : e.message);
+        setErro(e.response.data ? e.response.data : e.message);
         localStorage.removeItem("token");
         api.defaults.headers.common.Authorization = `Bearer`;
         navigate("/login");
