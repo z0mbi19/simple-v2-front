@@ -15,9 +15,13 @@ const Login = () => {
   const [showMessage, setShowMessage] = useState(false);
   const [formData, setFormData] = useState({});
   const navigate = useNavigate();
-  if (user) {
-    console.log(user);
-  }
+
+  useEffect(() => {
+    if (user) {
+      navigate("/dashboard");
+    }
+  }, []);
+
   const formik = useFormik({
     initialValues: {
       email: "",

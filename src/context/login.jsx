@@ -17,7 +17,7 @@ export const AuthProvider = (props) => {
       api.defaults.headers.common.Authorization = `Bearer${token.jwt}`;
 
       api
-        .get(`user/${token.id}`)
+        .get(`usernow`)
         .then(({ data }) => {
           setUser({ ...data, jwt: token.jwt });
         })
@@ -34,10 +34,7 @@ export const AuthProvider = (props) => {
       .post("auth", auth)
       .then(({ data }) => {
         setUser(data);
-        localStorage.setItem(
-          "token",
-          JSON.stringify({ jwt: data.jwt, id: data.id })
-        );
+        localStorage.setItem("token", JSON.stringify({ jwt: data.jwt }));
         api.defaults.headers.common.Authorization = `Bearer${data.jwt}`;
         navigate("/dashboard");
       })

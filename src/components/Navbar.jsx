@@ -42,6 +42,9 @@ const Navbar = () => {
         >
           <h1>Simple Smile</h1>
         </Link>
+        <Link style={{ textDecoration: "none", color: "#000" }} to="/meuperfil">
+          <p>Meu perfil</p>
+        </Link>
         {user && user.colaborador && (
           <>
             <Link

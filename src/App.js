@@ -21,6 +21,7 @@ import UpdatePaciente from "./components/Paciente/UpdatePaciente";
 import Funcionario from "./pages/Funcionario";
 import CreateFuncionario from "./components/Funcionario/CreateFuncionario";
 import UpdateFuncionario from "./components/Funcionario/UpdateFuncionario";
+import MeuPerfil from "./pages/MeuPerfil";
 
 function App() {
   const { user } = useContext(AuthContext);
@@ -28,10 +29,13 @@ function App() {
   return (
     <Routes>
       <Route path="/" element={<Login />} />
+      <Route path="/meuperfil" element={<MeuPerfil />} />
+
       <Route path="*" element={<Login />} />
       {user && user.jwt && (
         <>
           <Route path="/dashboard" element={<Dashboard />} />
+
           {user && user.colaborador && (
             <>
               <Route path="/paciente" element={<Paciente />} />

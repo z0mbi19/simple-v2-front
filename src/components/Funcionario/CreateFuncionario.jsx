@@ -281,7 +281,7 @@ const CreateFuncionario = () => {
               />
             </div>
             <div className="field col-12 md:col-3">
-              <label htmlFor="ctps">ctps</label>
+              <label htmlFor="ctps">CTPS</label>
               <InputNumber
                 required
                 inputId="ctps"
@@ -292,7 +292,7 @@ const CreateFuncionario = () => {
               />
             </div>
             <div className="field col-12 md:col-3">
-              <label htmlFor="pis">pis</label>
+              <label htmlFor="pis">PIS</label>
               <InputNumber
                 required
                 inputId="pis"
@@ -303,7 +303,7 @@ const CreateFuncionario = () => {
               />
             </div>
             <div className="field col-12 md:col-3">
-              <label htmlFor="adm">adm</label>
+              <label htmlFor="adm">Administrador</label>
               <SelectButton
                 required
                 options={admOptions}
@@ -329,7 +329,7 @@ const CreateFuncionario = () => {
             {formik.values.dentista && (
               <>
                 <div className="field col-12 md:col-3">
-                  <label htmlFor="cro">cro</label>
+                  <label htmlFor="cro">CRO</label>
                   <InputNumber
                     required
                     inputId="cro"
