@@ -125,7 +125,6 @@ const UpdateFuncionario = () => {
     api
       .get(`user/${id}`)
       .then(({ data }) => {
-        console.log(data);
         setData({ ...data });
         formik.values.nome = data.nome;
         formik.values.email = data.email;

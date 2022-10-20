@@ -4,9 +4,9 @@ import { InputText } from "primereact/inputtext";
 import { Button } from "primereact/button";
 import { Password } from "primereact/password";
 import { classNames } from "primereact/utils";
-import { Fieldset, Toast } from "primereact";
+import { Divider, Fieldset, Toast } from "primereact";
 import { AuthContext } from "../context/login";
-import { useNavigate } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
 
 const Login = () => {
   const { user, handleLogin, erro } = useContext(AuthContext);
@@ -132,6 +132,16 @@ const Login = () => {
                     type="submit"
                     label="Entrar"
                   />
+
+                  <Divider align="center">
+                    <b>OU</b>
+                  </Divider>
+                  <Link to="create">
+                    <Button
+                      className="p-button-text"
+                      label="Criar conta como paciente"
+                    />
+                  </Link>
                 </form>
               </div>
             </div>

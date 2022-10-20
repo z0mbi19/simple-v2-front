@@ -28,7 +28,22 @@ const MeuPerfil = () => {
       .get("usernow")
       .then(({ data }) => {
         setData(data);
-        console.log(data);
+        formik.values.nome = data.nome;
+        formik.values.email = data.email;
+        formik.values.cpf = data.cpf;
+        formik.values.nascimento = new Date(data.nascimento);
+        formik.values.telefone = data.telefone;
+        formik.values.sexo = data.sexo;
+        formik.values.cep = data.cep;
+        formik.values.endereco = data.endereco;
+        formik.values.cidade = data.cidade;
+        formik.values.uf = data.uf;
+        formik.values.ativo = data.ativo;
+        formik.values.pis = data.colaborador.pis;
+        formik.values.ctps = data.colaborador.ctps;
+        formik.values.adm = data.colaborador.adm;
+        formik.values.cro = data.colaborador.dentista.cro;
+        formik.values.especialidade = data.colaborador.dentista.especialidade;
       })
       .catch((e) => {
         console.log(e.response.data);
@@ -71,7 +86,7 @@ const MeuPerfil = () => {
     onSubmit: (value) => {
       console.log({ ...data, value });
       api
-        .put("usernow", { ...value, senha: data.senha, cpf: data.cpf })
+        .put("usernow", { ...value, cpf: data.cpf })
         .then(() => {
           toast.current.show({
             severity: "success",

@@ -13,7 +13,7 @@ export const AuthProvider = (props) => {
 
   useEffect(() => {
     const token = JSON.parse(localStorage.getItem("token") || "{}");
-    if (token.jwt) {
+    if (token) {
       api.defaults.headers.common.Authorization = `Bearer${token.jwt}`;
 
       api
@@ -23,7 +23,11 @@ export const AuthProvider = (props) => {
         })
         .catch((e) => {
           console.log(e);
-          setErro(e);
+          setErro(
+            e.response.data
+              ? e.response.data
+              : "Falha em comunicar com o servidor"
+          );
         });
       setUser(token);
     }
@@ -39,8 +43,16 @@ export const AuthProvider = (props) => {
         navigate("/dashboard");
       })
       .catch((e) => {
-        console.log(e.response ? e.response : "e.message");
-        setErro(e.response ? e.response : "e.message");
+        console.log(
+          e.response.data
+            ? e.response.data
+            : "Falha em comunicar com o servidor"
+        );
+        setErro(
+          e.response.data
+            ? e.response.data
+            : "Falha em comunicar com o servidor"
+        );
         localStorage.removeItem("token");
         api.defaults.headers.common.Authorization = `Bearer`;
         navigate("/login");
